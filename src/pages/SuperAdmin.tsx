@@ -57,14 +57,17 @@ export default function SuperAdmin() {
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-8">Painel Super Admin</h1>
         
-        <Tabs defaultValue="empresas" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-7">
+        <Tabs defaultValue="analytics" className="space-y-6">
+          <TabsList className="grid w-full grid-cols-6 lg:grid-cols-10">
+            <TabsTrigger value="analytics">Analytics</TabsTrigger>
             <TabsTrigger value="empresas">Empresas</TabsTrigger>
             <TabsTrigger value="usuarios">Usuários</TabsTrigger>
             <TabsTrigger value="planos">Planos</TabsTrigger>
+            <TabsTrigger value="permissoes">Permissões</TabsTrigger>
+            <TabsTrigger value="integracoes">Integrações</TabsTrigger>
+            <TabsTrigger value="configuracoes">Config</TabsTrigger>
             <TabsTrigger value="whatsapp">WhatsApp</TabsTrigger>
             <TabsTrigger value="n8n">n8n</TabsTrigger>
-            <TabsTrigger value="estatisticas">Estatísticas</TabsTrigger>
             <TabsTrigger value="filas">Filas</TabsTrigger>
           </TabsList>
 
