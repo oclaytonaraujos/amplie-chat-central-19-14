@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { Navigate } from 'react-router-dom';
@@ -20,11 +19,15 @@ import PlanosGerenciamento from '@/components/admin/PlanosGerenciamento';
 import PermissoesAvancadas from '@/components/admin/PermissoesAvancadas';
 import IntegracoesCentralizadas from '@/components/admin/IntegracoesCentralizadas';
 import ConfiguracoesAvancadas from '@/components/admin/ConfiguracoesAvancadas';
-
 export default function SuperAdmin() {
-  const { user, loading: authLoading } = useAuth();
-  const { isSuperAdmin, loading: roleLoading } = useUserRole();
-
+  const {
+    user,
+    loading: authLoading
+  } = useAuth();
+  const {
+    isSuperAdmin,
+    loading: roleLoading
+  } = useUserRole();
   console.log('SuperAdmin renderizado:', {
     user: user?.email,
     isSuperAdmin,
@@ -35,32 +38,27 @@ export default function SuperAdmin() {
   // Mostrar loading enquanto verifica permissões
   if (authLoading || roleLoading) {
     console.log('SuperAdmin - Aguardando carregamento...');
-    return (
-      <div className="min-h-screen flex items-center justify-center">
+    return <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4" />
           <p className="text-gray-600">Verificando permissões...</p>
         </div>
-      </div>
-    );
+      </div>;
   }
 
   // Verificar se é super admin após carregamento completo
   if (!user || !isSuperAdmin) {
-    console.log('SuperAdmin - Acesso negado:', { 
-      hasUser: !!user, 
+    console.log('SuperAdmin - Acesso negado:', {
+      hasUser: !!user,
       userEmail: user?.email,
-      isSuperAdmin 
+      isSuperAdmin
     });
     return <Navigate to="/painel" replace />;
   }
-
   console.log('✅ SuperAdmin - Acesso autorizado para:', user.email);
-
-  return (
-    <Layout title="Painel Super Admin" description="Gerencie todas as empresas e configurações da plataforma">
+  return <Layout title="Painel Super Admin" description="Gerencie todas as empresas e configurações da plataforma">
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8">Painel Super Admin</h1>
+        
         
         <Tabs defaultValue="analytics" className="space-y-6">
           <TabsList className="grid w-full grid-cols-6 lg:grid-cols-10">
@@ -222,6 +220,5 @@ export default function SuperAdmin() {
           </TabsContent>
         </Tabs>
       </div>
-    </Layout>
-  );
+    </Layout>;
 }
