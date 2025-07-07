@@ -11,7 +11,7 @@ import UsuariosTab from '@/components/admin/UsuariosTab';
 import ZApiConfigTab from '@/components/admin/ZApiConfigTab';
 import RelatoriosEstatisticasCard from '@/components/admin/RelatoriosEstatisticasCard';
 import { useUserRole } from '@/hooks/useUserRole';
-import { Layout } from '@/components/layout/Layout';
+
 import QueueMonitoring from '@/components/admin/QueueMonitoring';
 import { N8nIntegrationTab } from '@/components/admin/N8nIntegrationTab';
 import AnalyticsDashboard from '@/components/admin/AnalyticsDashboard';
@@ -56,7 +56,23 @@ export default function SuperAdmin() {
     return <Navigate to="/painel" replace />;
   }
   console.log('✅ SuperAdmin - Acesso autorizado para:', user.email);
-  return <Layout title="Painel Super Admin" description="Gerencie todas as empresas e configurações da plataforma">
+  return (
+    <div className="min-h-screen bg-background">
+      {/* Header do Super Admin */}
+      <header className="border-b bg-card shadow-sm">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-2xl font-bold text-foreground">Painel Super Admin</h1>
+              <p className="text-sm text-muted-foreground">Gerencie todas as empresas e configurações da plataforma</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-muted-foreground">{user.email}</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
       <div className="container mx-auto px-4 py-8">
         
         
@@ -220,5 +236,6 @@ export default function SuperAdmin() {
           </TabsContent>
         </Tabs>
       </div>
-    </Layout>;
+    </div>
+  );
 }
