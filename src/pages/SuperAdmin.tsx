@@ -15,6 +15,11 @@ import { useUserRole } from '@/hooks/useUserRole';
 import { Layout } from '@/components/layout/Layout';
 import QueueMonitoring from '@/components/admin/QueueMonitoring';
 import { N8nIntegrationTab } from '@/components/admin/N8nIntegrationTab';
+import AnalyticsDashboard from '@/components/admin/AnalyticsDashboard';
+import PlanosGerenciamento from '@/components/admin/PlanosGerenciamento';
+import PermissoesAvancadas from '@/components/admin/PermissoesAvancadas';
+import IntegracoesCentralizadas from '@/components/admin/IntegracoesCentralizadas';
+import ConfiguracoesAvancadas from '@/components/admin/ConfiguracoesAvancadas';
 
 export default function SuperAdmin() {
   const { user, loading: authLoading } = useAuth();
@@ -71,6 +76,20 @@ export default function SuperAdmin() {
             <TabsTrigger value="filas">Filas</TabsTrigger>
           </TabsList>
 
+          <TabsContent value="analytics">
+            <Card>
+              <CardHeader>
+                <CardTitle>Analytics e Relatórios</CardTitle>
+                <CardDescription>
+                  Dashboard com métricas avançadas e relatórios personalizáveis
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <AnalyticsDashboard />
+              </CardContent>
+            </Card>
+          </TabsContent>
+
           <TabsContent value="empresas">
             <Card>
               <CardHeader>
@@ -108,7 +127,49 @@ export default function SuperAdmin() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <PlanosTab />
+                <PlanosGerenciamento />
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="permissoes">
+            <Card>
+              <CardHeader>
+                <CardTitle>Permissões Avançadas</CardTitle>
+                <CardDescription>
+                  Gerencie perfis e permissões granulares do sistema
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <PermissoesAvancadas />
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="integracoes">
+            <Card>
+              <CardHeader>
+                <CardTitle>Integrações Centralizadas</CardTitle>
+                <CardDescription>
+                  Monitore webhooks, APIs e integrações do sistema
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <IntegracoesCentralizadas />
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="configuracoes">
+            <Card>
+              <CardHeader>
+                <CardTitle>Configurações Avançadas</CardTitle>
+                <CardDescription>
+                  Configurações técnicas e avançadas do sistema
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ConfiguracoesAvancadas />
               </CardContent>
             </Card>
           </TabsContent>
@@ -155,19 +216,6 @@ export default function SuperAdmin() {
             </Card>
           </TabsContent>
 
-          <TabsContent value="estatisticas">
-            <Card>
-              <CardHeader>
-                <CardTitle>Estatísticas Gerais</CardTitle>
-                <CardDescription>
-                  Visualize relatórios detalhados da plataforma
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <RelatoriosEstatisticasCard />
-              </CardContent>
-            </Card>
-          </TabsContent>
 
           <TabsContent value="filas">
             <QueueMonitoring />
