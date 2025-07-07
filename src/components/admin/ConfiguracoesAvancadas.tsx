@@ -363,7 +363,7 @@ export default function ConfiguracoesAvancadas() {
       case 'number':
         return Number(valor) || 0;
       case 'boolean':
-        return valor === 'true' || valor === true;
+        return valor === 'true';
       case 'json':
         try {
           return JSON.parse(valor);
